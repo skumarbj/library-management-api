@@ -1,0 +1,80 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+
+# Book Module
+api_book_list:
+    path: /api/book
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\BookController::index
+    methods: ['GET']
+
+api_book_details:
+    path: /api/book/{id}
+    controller: App\Controller\BookController::details
+    methods: ['GET']
+
+api_book_create:
+    path: /api/book
+    controller: App\Controller\BookController::create
+    methods: ['POST']
+
+api_book_update:
+    path: /api/book/{id}
+    controller: App\Controller\BookController::update
+    methods: ['PUT']
+
+api_book_delete:
+    path: /api/book/{id}
+    controller: App\Controller\BookController::delete
+    methods: ['DELETE']
+
+
+# User Module
+api_user_list:
+    path: /api/user
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\UserController::index
+    methods: ['GET']
+
+api_user_details:
+    path: /api/user/{id}
+    controller: App\Controller\UserController::details
+    methods: ['GET']
+
+api_user_create:
+    path: /api/user
+    controller: App\Controller\UserController::create
+    methods: ['POST']
+
+api_user_update:
+    path: /api/user/{id}
+    controller: App\Controller\UserController::update
+    methods: ['PUT']
+
+api_user_delete:
+    path: /api/user/{id}
+    controller: App\Controller\UserController::delete
+    methods: ['DELETE']
+
+
+# Borrow Module
+api_borrow:
+    path: /api/borrow
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\BorrowController::borrow
+    methods: ['POST']
+
+api_borrow_return:
+    path: /api/borrow/return
+    controller: App\Controller\BorrowController::return
+    methods: ['PUT']
+
+api_borrow_history:
+    path: /api/borrow/history
+    controller: App\Controller\BorrowController::history
+    methods: ['GET']
+

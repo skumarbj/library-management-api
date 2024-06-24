@@ -1,0 +1,82 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+# Composer
+/vendor/
+composer.lock
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+
+
+# General
+/.DS_Store
+/.idea
+/.vscode
+*.log
+*.cache
+*.bak
+*.swp
+*.tmp
+*.temp
+Thumbs.db
+*.iml
+
+
+# Node and NPM
+/node_modules/
+/npm-debug.log
+
+# Webpack
+/.webpack/
+/public/build/
+/public/bundles/
+/public/js/
+/public/css/
+/public/images/assets/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# PHPStorm
+/.idea
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Linux
+*~
+
+# Symfony Flex
+/.env.local.php
+/.env.*.local.php
+
+# PHPUnit
+/phpunit-result.cache
+/tests/phpunit.xml
+/tests/phpunit.xml.dist
+
+# Captures
+/captures/

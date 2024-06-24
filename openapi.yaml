@@ -1,0 +1,214 @@
+openapi: 3.0.0
+paths:
+  /api/book:
+    get:
+      summary: 'Get all books'
+      operationId: 54eec04695c91dbea7f6b10876f4593d
+      responses:
+        '200':
+          description: 'Returns the list of books'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      summary: 'Create a new book'
+      operationId: efd28dfea1df5aacbb3bc38a9ebcb62a
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '201':
+          description: 'Book created!'
+        '400':
+          description: 'Missing required fields'
+  '/api/book/{id}':
+    get:
+      summary: 'Get book details by ID'
+      operationId: a3756467aa7968a07a6b25f9ba2e3514
+      responses:
+        '200':
+          description: 'Returns the details of book by given ID'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '400':
+          description: 'Invalid Book ID'
+    put:
+      summary: 'Update book by ID'
+      operationId: 8846758c78f05b9727fa1ad1a626b491
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '201':
+          description: 'Book updated successfully'
+        '400':
+          description: 'Missing required fields | Invalid Status'
+    delete:
+      summary: 'Delete book by ID'
+      operationId: a26665dbb990b93b9bb708492ac2f3a7
+      responses:
+        '200':
+          description: 'Book deleted!'
+        '400':
+          description: 'Invalid Book ID'
+  /api/borrow:
+    post:
+      summary: 'Create a new book'
+      operationId: 5bccf4e4209a847419fdd2b2c4957000
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Borrow'
+      responses:
+        '201':
+          description: 'Book borrowed successfully!'
+        '400':
+          description: 'Missing required fields | Invalid (date | book id | user id)'
+  /api/borrow/history:
+    post:
+      summary: 'Returns Borrow history'
+      operationId: b2622dbc67cd308adcaa72da9a6ead7d
+      responses:
+        '200':
+          description: 'shows borrow history'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Borrow'
+  /api/user:
+    get:
+      summary: 'Get all users'
+      operationId: 2b4d038afd03d89d7380d762bf16ea5b
+      responses:
+        '200':
+          description: 'Returns the list of users'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: 'Create a new user'
+      operationId: bce90e6b61922d8565ecf86dd880bcc6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: 'User created!'
+        '400':
+          description: 'Missing required fields'
+  '/api/user/{id}':
+    get:
+      summary: 'Get user details by ID'
+      operationId: 435fe437eb2e5e729b3e9845d6e33368
+      responses:
+        '200':
+          description: 'Returns the details of user by given ID'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: 'Invalid User ID'
+    put:
+      summary: 'Update user by ID'
+      operationId: 54bd671742335bf4ab57bfd55b9460b4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: 'User updated successfully'
+        '400':
+          description: 'Missing required fields | Invalid Roles'
+    delete:
+      summary: 'Delete user by ID'
+      operationId: 848b13642d73166ed9662bca620d1433
+      responses:
+        '200':
+          description: 'User deleted!'
+        '400':
+          description: 'Invalid User ID'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        role:
+          type: string
+        deleted_date:
+          type: string
+          format: date-time
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        author:
+          type: string
+        genre:
+          type: string
+        isbn:
+          type: string
+        published_date:
+          type: string
+          format: date-time
+        status:
+          type: string
+        deleted_date:
+          type: string
+          format: date-time
+    Borrow:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        user_id:
+          type: integer
+          format: int64
+        book_id:
+          type: integer
+          format: int64
+        checkout_date:
+          type: string
+          format: date-time
+        checkin_date:
+          type: string
+          format: date-time
